@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_hospital_details,hospital.details,model_hospital_details,,1,1,1,1
+access_corona_details,corona.details,model_corona_details,,1,1,1,1
+access_patient_details,patient.details,model_patient_details,,1,1,1,1
