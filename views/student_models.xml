@@ -2,31 +2,22 @@
 <odoo>
     <data>
  <!--   hospital      -->
-        <record id="student_details_form" model="ir.ui.view">
+      
+         <record id="hospital_details_form" model="ir.ui.view">
             <field name="name">hospital.details.form</field>
             <field name="model">hospital.details</field>
             <field name="arch" type="xml">
-                <form string="Job">
-                    <header>
-                        <button name="set_recruit" string="Start Recruitment" states="open" type="object" class="oe_highlight" groups="base.group_user"/>
-                        <button name="set_open" string="Stop Recruitment" states="recruit" type="object" groups="base.group_user"/>
-                       
-                    </header>
-                    <sheet>
-                        <div class="oe_button_box" name="button_box"/>
-                        <div class="oe_title">
-                            <label for="name" class="oe_edit_only"/>
-                            <h1><field name="hos_name" placeholder="e.g. Sales Manager"/></h1>
-                                <field name="number_bed"/>
-                        
-                        </div>
-                        </sheet>
+                <form string="hospital">
+                        <group>
+                              <field name="hos_name"/>
+                             
+                             <field name="number_bed"/>
+                        </group>                 
                 </form>
             </field>
         </record>
-
-        <record id="student_details_tree" model="ir.ui.view">
-            <field name="name">hospital.details.tree</field>
+        <record id="hospital_details_tree" model="ir.ui.view">
+            <field name="name">hospital_details_tree</field>
             <field name="model">hospital.details</field>
             <field name="arch" type="xml">
                 <tree >
@@ -36,8 +27,8 @@
             </field>
         </record>
 
-        <record id="hr_job_view_kanban" model="ir.ui.view">
-            <field name="name">hospital.details.kanban</field>
+        <record id="hospital_kanban" model="ir.ui.view">
+            <field name="name">hospital_details_kanban</field>
             <field name="model">hospital.details</field>
             <field name="arch" type="xml">
                 <kanban class="o_kanban_mobile">
@@ -58,7 +49,7 @@
         </record>
 
 
-    <record model="ir.actions.act_window" id="action_student_details">
+    <record model="ir.actions.act_window" id="action_hospital_details">
     <field name="name">hospital_details</field>
     <field name="res_model">hospital.details</field>
     <field name="view_mode">tree,form,kanban</field>
@@ -66,46 +57,41 @@
 
 
 
-       <menuitem id="student_details_root" name="Student" sequence="0" />
+       <menuitem id="student_details_root" name="Hospital" sequence="0" />
 
-       <menuitem id="student_details_student" name="Student" parent="student_details_root" action="action_student_details"/>
+       <menuitem id="student_details_hospital" name="Hospital" parent="student_details_root" action="action_hospital_details"/>
 
   <!-- corona -->
-        <record id="student_details_form" model="ir.ui.view">
+        <record id="corona_details_form" model="ir.ui.view">
             <field name="name">corona.details.form</field>
             <field name="model">corona.details</field>
             <field name="arch" type="xml">
-                <form string="Job">
-                    <header>
-                        <button name="set_recruit" string="Start Recruitment" states="open" type="object" class="oe_highlight" groups="base.group_user"/>
-                        <button name="set_open" string="Stop Recruitment" states="recruit" type="object" groups="base.group_user"/>
-                       
-                    </header>
+                <form string="corona">
+                    
                     <sheet>
-                        <div class="oe_button_box" name="button_box"/>
-                        <div class="oe_title">
-                            <label for="name" class="oe_edit_only"/>
-                            <h1><field name="country_name" placeholder="e.g. Sales Manager"/></h1>
+                            <group>
+                         
+                            <field name="country_name" />
                                 <field name="die_count"/>
-                        
-                        </div>
+                            </group>
+                
                         </sheet>
                 </form>
             </field>
         </record>
 
-        <record id="student_details_tree" model="ir.ui.view">
-            <field name="name">corona.details.tree</field>
+        <record id="corona_details_tree" model="ir.ui.view">
+            <field name="name">corona_details_tree</field>
             <field name="model">corona.details</field>
             <field name="arch" type="xml">
-                <tree string="corona" >
+                <tree string="corona       " >
                     <field name="country_name"/>
                     <field name="die_count"/>
                 </tree>
             </field>
         </record>
 
-        <record id="hr_job_view_kanban" model="ir.ui.view">
+        <record id="corona_view_kanban" model="ir.ui.view">
             <field name="name">corona.details.kanban</field>
             <field name="model">corona.details</field>
             <field name="arch" type="xml">
@@ -138,6 +124,87 @@
        
 
        <menuitem id="corona_details_" name="Corona" parent="student_details_root" action="action_corona_details"/>
+
+<!--Patients-->
+       <record id="patient_details_form" model="ir.ui.view">
+            <field name="name">patient_details_form</field>
+            <field name="model">patient.details</field>
+            <field name="arch" type="xml">
+                <form >
+                    <header>
+                   
+                    </header>
+                    <sheet>
+                        
+                            <group>
+                            <label for="name" />
+                            <h1><field name="name" placeholder="e.g. Sales Manager"/></h1>
+                                <field name="age"/>
+                                <field name="mobile"/>
+                                <field name="disease"/>
+                                <field name="email"/>          
+                                <field name="fee"/>             
+                            </group>
+                        </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="patient_details_tree" model="ir.ui.view">
+            <field name="name">patient_details_tree</field>
+            <field name="model">patient.details</field>
+            <field name="arch" type="xml">
+                <tree >
+                    <field name="name"/>
+                      <field name="age"/>
+                                <field name="mobile"/>
+                                <field name="disease"/>
+                                <field name="email"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="patient_view_kanban" model="ir.ui.view">
+            <field name="name">patient_details_kanban</field>
+            <field name="model">patient.details</field>
+            <field name="arch" type="xml">
+                <kanban class="o_kanban_mobile">
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div class="oe_kanban_global_click">
+                                <div>
+                                    <strong><field name="name"/></strong>
+                                </div>
+                                <div>
+                                    <span><field name="age"/>&amp;nbsp;</span>
+                                </div>
+                                  <div>
+                                    <span><field name="mobile"/>&amp;nbsp;</span>
+                                </div>
+                                  <div>
+                                    <span><field name="email"/>&amp;nbsp;</span>
+                                </div>
+                                <div>
+                                    <span><field name="disease"/>&amp;nbsp;</span>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
+
+    <record model="ir.actions.act_window" id="action_patient_details">
+    <field name="name">patient_details</field>
+    <field name="res_model">patient.details</field>
+    <field name="view_mode">tree,form,kanban</field>
+    </record>
+
+
+
+
+       <menuitem id="student_details_patient" name="Patient" parent="student_details_root" action="action_patient_details"/>
 
     </data>
 </odoo>
